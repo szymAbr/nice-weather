@@ -9,19 +9,17 @@ export default function WeatherList() {
 
   return (
     <Row>
-      {weather.map((item: any) => {
-        return (
-          <Col key={item.dt}>
-            <WeatherCard
-              temp_max={item.temp_max}
-              temp_min={item.temp_min}
-              dt={item.dt * 1000}
-              main={item.weather[0].main}
-              icon={item.weather[0].icon}
-            />
-          </Col>
-        );
-      })}
+      {weather.list.map((item: any) => (
+        <Col key={item.dt}>
+          <WeatherCard
+            temp_max={item.main.temp_max}
+            temp_min={item.main.temp_min}
+            dt={item.dt * 1000}
+            main={item.weather[0].main}
+            icon={item.weather[0].icon}
+          />
+        </Col>
+      ))}
     </Row>
   );
 }

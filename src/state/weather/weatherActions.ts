@@ -52,7 +52,7 @@ export function fetchWeatherByCity(city: string) {
   return (dispatch: any) => {
     dispatch(fetchWeatherRequest());
     axios
-      .get(`${apiUrl}/forecast?q=${city}&appid=${apiKey}`)
+      .get(`${apiUrl}/forecast?q=${city}&units=metric&appid=${apiKey}`)
       .then((response) => {
         const weather = response.data;
         dispatch(fetchWeatherSuccess(weather));

@@ -3,7 +3,7 @@ import { Container, Navbar, Nav } from "react-bootstrap";
 
 export default function AppNavbar() {
   return (
-    <Navbar variant="dark" bg="dark" expand="md">
+    <Navbar variant="dark" bg="dark" expand="md" className="mb-5">
       <Container>
         <Navbar.Brand href="#">WEATHER APP</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-toggle" />

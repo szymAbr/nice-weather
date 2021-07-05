@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Card } from "react-bootstrap";
 import { setPosition } from "../state";
 import { RootState } from "../state/store";
@@ -27,7 +27,7 @@ export default function CurrentLocation() {
 
   useEffect(() => {
     dispatch(setPosition([lat, lon]));
-  }, [lon]);
+  }, [lat, lon]);
 
   return (
     <Card className="mt-4">

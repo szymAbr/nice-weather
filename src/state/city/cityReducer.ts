@@ -15,7 +15,7 @@ export default function cityReducer(
   switch (action.type) {
     case SET_CITY:
       return {
-        position: action.payload,
+        city: action.payload,
       };
     default:
       return state;
