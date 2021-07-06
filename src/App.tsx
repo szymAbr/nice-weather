@@ -10,7 +10,7 @@ function App() {
   return (
     <React.Fragment>
       <AppNavbar />
-      <Container className="text-center">
+      <Container>
         <CitySelector />
       </Container>
     </React.Fragment>

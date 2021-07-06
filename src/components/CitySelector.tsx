@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Container, Row, Col, FormControl, Button } from "react-bootstrap";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { fetchWeatherByCity } from "../state";
 import WeatherList from "./WeatherList";
 import { RootState } from "../state/store";
@@ -10,31 +10,33 @@ export default function CitySelector() {
   let weather = useSelector((state: RootState) => state.weather.weather);
   const dispatch = useDispatch();
 
-  function handleClick(e: any) {
+  function handleSubmit(e: any) {
+    e.preventDefault();
     dispatch(fetchWeatherByCity(city));
   }
 
   return (
-    <Container>
-      <Row className="p-3">
-        <Col>
-          <h2>Search by city name:</h2>
-        </Col>
+    <Container className="mb-4">
+      <Form className="text-center" onSubmit={handleSubmit}>
+        <Row>
+          <Col>
+            <Form.Label className="h4 mb-4">Search by city name:</Form.Label>
+            <Form.Control
+              placeholder="Enter city"
+              onChange={(e) => setCity(e.target.value)}
+              value={city}
+              style={{ width: "30%" }}
+              className="m-auto"
+            />
+          </Col>
+        </Row>
 
-        <Col>
-          <FormControl
-            placeholder="Enter city"
-            onChange={(e) => setCity(e.target.value)}
-            value={city}
-          />
-        </Col>
-      </Row>
-
-      <Row className="p-3">
-        <Col>
-          <Button onClick={handleClick}>Check weather forecast</Button>
-        </Col>
-      </Row>
+        <Row className="p-3">
+          <Col>
+            <Button className="mt-2">Check weather forecast</Button>
+          </Col>
+        </Row>
+      </Form>
 
       {weather && <WeatherList />}
     </Container>

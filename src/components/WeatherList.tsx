@@ -7,10 +7,16 @@ import { Row, Col } from "react-bootstrap";
 export default function WeatherList() {
   let weather = useSelector((state: RootState) => state.weather.weather);
 
+  // function dailyForecast((item.dt_txt): any) {
+  //   item.dt_txt.includes("12:00") ?
+  //     item :
+  //     null
+  // }
+
   return (
     <Row>
       {weather.list.map((item: any) => (
-        <Col key={item.dt}>
+        <Col key={item.dt} className="col-4">
           <WeatherCard
             temp_max={item.main.temp_max}
             temp_min={item.main.temp_min}

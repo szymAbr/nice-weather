@@ -5,17 +5,26 @@ export default function WeatherCard(props: any) {
   const date = new Date(props.dt);
 
   return (
-    <Card className="m-3" style={{ width: "20em" }}>
+    <Card className="m-3 text-center">
       <Card.Img
         variant="top"
         src={`http://openweathermap.org/img/wn/${props.icon}@2x.png`}
       />
       <Card.Body>
-        <Card.Title>{props.main}</Card.Title>
-        <Card.Text>{date.toLocaleDateString()}</Card.Text>
-        <Card.Text>{date.toLocaleTimeString()}</Card.Text>
-        <Card.Text>Min: {props.temp_min} &deg;C</Card.Text>
-        <Card.Text>Max: {props.temp_max} &deg;C</Card.Text>
+        <Card.Title className="mb-3">{props.main}</Card.Title>
+        <Card.Text>
+          <i className="bi bi-calendar"></i> {date.toLocaleDateString()}
+        </Card.Text>
+        <Card.Text>
+          <i className="bi bi-clock"></i> {date.toLocaleTimeString()}
+        </Card.Text>
+        <Card.Text>
+          <i className="bi bi-thermometer"></i> Min: {props.temp_min} &deg;C
+        </Card.Text>
+        <Card.Text>
+          <i className="bi bi-thermometer-high"></i> Max: {props.temp_max}
+          &deg;C
+        </Card.Text>
       </Card.Body>
     </Card>
   );
