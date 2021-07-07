@@ -15,6 +15,10 @@ export default function CitySelector() {
     dispatch(fetchWeatherByCity(city));
   }
 
+  useEffect(() => {
+    city ? setCity(city[0].toUpperCase() + city.slice(1)) : setCity("");
+  }, [city]);
+
   return (
     <Container className="mb-4">
       <Form className="text-center" onSubmit={handleSubmit}>
@@ -38,7 +42,22 @@ export default function CitySelector() {
         </Row>
       </Form>
 
-      {weather && <WeatherList />}
+      {weather ? (
+        <Container className="mt-4">
+          <Row>
+            {city ? (
+              <Col className="mb-3">
+                <h2>Weather for {city}</h2>
+              </Col>
+            ) : null}
+          </Row>
+          <Row>
+            <Col>
+              <WeatherList />
+            </Col>
+          </Row>
+        </Container>
+      ) : null}
     </Container>
   );
 }

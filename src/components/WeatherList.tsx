@@ -16,7 +16,7 @@ export default function WeatherList() {
   return (
     <Row>
       {weather.list.map((item: any) => (
-        <Col key={item.dt} className="col-4">
+        <Col key={item.dt} sm={12} md={4}>
           <WeatherCard
             temp_max={item.main.temp_max}
             temp_min={item.main.temp_min}
