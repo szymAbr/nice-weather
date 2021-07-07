@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export default function AppNavbar() {
   return (
@@ -9,9 +10,12 @@ export default function AppNavbar() {
         <Navbar.Toggle aria-controls="navbar-toggle" />
         <Navbar.Collapse id="navbar-toggle">
           <Nav className="justify-content-end" style={{ width: "100%" }}>
-            <Nav.Link href="#">Your location</Nav.Link>
-            <Nav.Link href="#">Your saved locations</Nav.Link>
-            <Nav.Link href="#">All locations</Nav.Link>
+            <Nav.Link as={Link} to="/currentlocation">
+              Your location
+            </Nav.Link>
+            <Nav.Link as={Link} to="/cityselector">
+              Search by city
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

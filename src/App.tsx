@@ -1,19 +1,18 @@
 import React from "react";
-import { Container } from "react-bootstrap";
 import AppNavbar from "./components/AppNavbar";
 import CurrentLocation from "./components/CurrentLocation";
-import WeatherContainer from "./components/WeatherContainer";
 import CitySelector from "./components/CitySelector";
-import WeatherList from "./components/WeatherList";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
-    <React.Fragment>
+    <Router>
       <AppNavbar />
-      <Container>
-        <CitySelector />
-      </Container>
-    </React.Fragment>
+      <Switch>
+        <Route path="/currentlocation" component={CurrentLocation} />
+        <Route path="/cityselector" component={CitySelector} />
+      </Switch>
+    </Router>
   );
 }
 

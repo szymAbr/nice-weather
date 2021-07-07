@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Card } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { setPosition } from "../state";
-import { RootState } from "../state/store";
 
 export default function CurrentLocation() {
   const [lat, setLat] = useState(0);
@@ -30,15 +29,10 @@ export default function CurrentLocation() {
   }, [lat, lon]);
 
   return (
-    <Card className="mt-4">
-      <Card.Header>Your current location: </Card.Header>
-      <Card.Body>
-        <Card.Title className="mb-3">Coordinates</Card.Title>
-        <Card.Text>
-          <h6>Latitude: {lat}</h6>
-          <h6>Longitude: {lon}</h6>
-        </Card.Text>
-      </Card.Body>
-    </Card>
+    <Container className="text-center">
+      <Row>
+        <Col className="h2 mb-3">Weather for: /location/</Col>
+      </Row>
+    </Container>
   );
 }

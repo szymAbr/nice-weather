@@ -45,11 +45,7 @@ export default function CitySelector() {
       {weather ? (
         <Container className="mt-4">
           <Row>
-            {city ? (
-              <Col className="mb-3">
-                <h2>Weather for {city}</h2>
-              </Col>
-            ) : null}
+            {city ? <Col className="h2 mb-3">Weather for {city}</Col> : null}
           </Row>
           <Row>
             <Col>
