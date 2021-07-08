@@ -2,7 +2,9 @@ import {
   FETCH_WEATHER_REQUEST,
   FETCH_WEATHER_SUCCESS,
   FETCH_WEATHER_FAILURE,
+  RESET_WEATHER_STATE,
 } from "./weatherTypes";
+import { LOCATION_CHANGE } from "react-router-redux";
 
 const initialState = {
   loading: false,
@@ -10,14 +12,14 @@ const initialState = {
   error: "",
 };
 
-interface CoordsState {
+interface WeatherState {
   loading: boolean;
   weather: null | object;
   error: string;
 }
 
-export default function coordsReducer(
-  state: CoordsState = initialState,
+export default function weatherReducer(
+  state: WeatherState = initialState,
   action: any
 ) {
   switch (action.type) {
@@ -38,7 +40,12 @@ export default function coordsReducer(
         weather: {},
         error: action.payload,
       };
+    case RESET_WEATHER_STATE:
+      return {
+        ...state,
+        weather: null,
+      };
     default:
-      return state
+      return state;
   }
 }

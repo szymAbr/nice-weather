@@ -2,6 +2,7 @@ import {
   FETCH_WEATHER_REQUEST,
   FETCH_WEATHER_SUCCESS,
   FETCH_WEATHER_FAILURE,
+  RESET_WEATHER_STATE,
 } from "./weatherTypes";
 import axios from "axios";
 
@@ -27,6 +28,12 @@ export function fetchWeatherFailure(error: string): WeatherAction {
   return {
     type: FETCH_WEATHER_FAILURE,
     payload: error,
+  };
+}
+
+export function resetWeatherState() {
+  return {
+    type: RESET_WEATHER_STATE,
   };
 }
 
