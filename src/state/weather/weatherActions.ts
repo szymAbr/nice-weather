@@ -9,7 +9,7 @@ import axios from "axios";
 const apiUrl = process.env.REACT_APP_API_URL;
 const apiKey = process.env.REACT_APP_API_KEY;
 
-export type WeatherAction = { type: string; payload: object | string };
+type WeatherAction = { type: string; payload: object | string };
 
 export function fetchWeatherRequest() {
   return {

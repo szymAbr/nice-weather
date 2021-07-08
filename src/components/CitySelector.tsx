@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useLocation } from "react-router";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { fetchWeatherByCity, resetWeatherState } from "../state";
-import WeatherList from "./WeatherList";
-import { RootState } from "../state/store";
+import WeatherContainer from "./WeatherContainer";
 
 export default function CitySelector() {
   const [city, setCity] = useState("");
-  let weather = useSelector((state: RootState) => state.weather.weather);
   const dispatch = useDispatch();
-  let location = useLocation();
+  const location = useLocation();
 
   function handleSubmit(e: any) {
     e.preventDefault();
@@ -40,28 +38,13 @@ export default function CitySelector() {
             />
           </Col>
         </Row>
-
         <Row className="p-3">
           <Col>
             <Button className="mt-2">Check weather forecast</Button>
           </Col>
         </Row>
       </Form>
-
-      {weather ? (
-        <Container className="mt-4">
-          <Row>
-            {weather.city.name ? (
-              <Col className="h2 mb-3">Weather for {weather.city.name}</Col>
-            ) : null}
-          </Row>
-          <Row>
-            <Col>
-              <WeatherList />
-            </Col>
-          </Row>
-        </Container>
-      ) : null}
+      <WeatherContainer />
     </Container>
   );
 }
