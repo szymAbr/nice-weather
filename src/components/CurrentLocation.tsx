@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import { fetchWeatherByCoords, resetWeatherState, setPosition } from "../state";
+import { fetchWeatherByCoords, resetWeatherState } from "../state";
 import WeatherContainer from "./WeatherContainer";
 
 export default function CurrentLocation() {
@@ -29,10 +29,7 @@ export default function CurrentLocation() {
     getPosition();
   }, []);
 
-  useEffect(() => {
-    dispatch(setPosition([lat, lon]));
-  }, [lat, lon]);
-
+  // clears the weather state on route change
   useEffect(() => {
     dispatch(resetWeatherState());
   }, [location]);

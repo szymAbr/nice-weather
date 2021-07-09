@@ -26,6 +26,7 @@ export default function WeatherList() {
     setWeatherList(weatherList);
   }
 
+  // returns the number of weather cards to be rendered, based on the time period selection
   function checkTimePeriod(time: number) {
     switch (time) {
       case 6:

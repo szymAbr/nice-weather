@@ -9,6 +9,7 @@ export default function TimeSelector() {
   const time = useSelector((state: RootState) => state.time.time);
   const dispatch = useDispatch();
 
+  // updates the state to include time period selected
   useEffect(() => {
     dispatch(setTimePeriod(timeOption));
   }, [timeOption]);

@@ -15,6 +15,7 @@ export default function CitySelector() {
     dispatch(fetchWeatherByCity(city));
   }
 
+  // clears the weather state on route change
   useEffect(() => {
     dispatch(resetWeatherState());
   }, [location]);

@@ -4,7 +4,6 @@ import {
   FETCH_WEATHER_FAILURE,
   RESET_WEATHER_STATE,
 } from "./weatherTypes";
-import { LOCATION_CHANGE } from "react-router-redux";
 
 const initialState = {
   loading: false,
