@@ -4,7 +4,7 @@ import { Card } from "react-bootstrap";
 export default function DateTime({ dt }: any) {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
-  const [weekday, setWeekday] = useState("");
+  const [dayOfWeek, setDayOfWeek] = useState("");
 
   const week = new Array(7);
   week[0] = "Sun";
@@ -19,7 +19,7 @@ export default function DateTime({ dt }: any) {
     const newDate = await new Date(dt);
     setDate(newDate.toLocaleDateString());
     setTime(newDate.toLocaleTimeString());
-    setWeekday(week[newDate.getDay()]);
+    setDayOfWeek(week[newDate.getDay()]);
   }
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export default function DateTime({ dt }: any) {
   return (
     <span>
       <Card.Text>
-        <i className="bi bi-calendar"></i> {date} ({weekday})
+        <i className="bi bi-calendar"></i> {date} ({dayOfWeek})
       </Card.Text>
       <Card.Text>
         <i className="bi bi-clock"></i> {time}
