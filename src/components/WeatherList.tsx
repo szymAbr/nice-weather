@@ -15,11 +15,10 @@ export default function WeatherList() {
     const weatherList = await weather.list.map((item: any) => (
       <Col key={item.dt} sm={12} md={4}>
         <WeatherCard
-          temp_max={item.main.temp_max}
-          temp_min={item.main.temp_min}
-          dt={item.dt * 1000}
-          main={item.weather[0].main}
+          description={item.weather[0].description}
           icon={item.weather[0].icon}
+          temp={item.main.temp}
+          dt={item.dt * 1000}
         />
       </Col>
     ));

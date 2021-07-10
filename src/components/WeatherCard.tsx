@@ -1,35 +1,28 @@
 import React from "react";
 import { Card } from "react-bootstrap";
+import DateTime from "./DateTime";
 
-export default function WeatherCard(props: any) {
-  const date = new Date(props.dt);
-
+export default function WeatherCard({ dt, description, temp, icon }: any) {
   return (
     <Card
-      className="m-3 text-center"
-      style={{ width: "90%", backgroundColor: "#BDD7EB" }}
+      className="m-auto mt-3 mb-3 text-center"
+      style={{ width: "100%", backgroundColor: "#BDD7EB" }}
     >
       <Card.Img
         variant="top"
-        src={`http://openweathermap.org/img/wn/${props.icon}@2x.png`}
+        src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
         className="m-auto mt-2"
         style={{ width: "7rem" }}
       />
       <Card.Body>
-        <Card.Title className="mb-4">{props.main}</Card.Title>
-        <Card.Text>
-          <i className="bi bi-calendar"></i> {date.toLocaleDateString()}
+        <Card.Title className="mb-4">
+          {description[0].toUpperCase() + description.slice(1)}
+        </Card.Title>
+        <Card.Text className="h5 mb-4">
+          <i className="bi bi-thermometer-half"></i>
+          {temp} &deg;C
         </Card.Text>
-        <Card.Text>
-          <i className="bi bi-clock"></i> {date.toLocaleTimeString()}
-        </Card.Text>
-        <Card.Text>
-          <i className="bi bi-thermometer"></i> Min: {props.temp_min} &deg;C
-        </Card.Text>
-        <Card.Text>
-          <i className="bi bi-thermometer-high"></i> Max: {props.temp_max}
-          &deg;C
-        </Card.Text>
+        <DateTime dt={dt} />
       </Card.Body>
     </Card>
   );
