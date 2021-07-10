@@ -4,7 +4,7 @@ Web application allowing users to get a weather forecast by the user's current l
 
 ## Project Status
 
-This project is currently in development.
+This project is currently in development. Functionality to store favorite cities to be added.
 
 ## Summary
 
