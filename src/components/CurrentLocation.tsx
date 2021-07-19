@@ -12,7 +12,7 @@ export default function CurrentLocation() {
   const location = useLocation();
 
   function getPosition() {
-    function updatePosition(position: any) {
+    function updatePosition(position: GeolocationPosition) {
       setLat(position.coords.latitude);
       setLon(position.coords.longitude);
     }

@@ -2,7 +2,14 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import DateTime from "./DateTime";
 
-export default function WeatherCard({ dt, description, temp, icon }: any) {
+interface WeatherProps {
+  dt: number;
+  description: string;
+  temp: number;
+  icon: string;
+}
+
+export default function WeatherCard({ dt, description, temp, icon }: WeatherProps) {
   return (
     <Card
       className="m-auto mt-3 mb-3 text-center"

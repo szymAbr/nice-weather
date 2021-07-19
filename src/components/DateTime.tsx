@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
 
-export default function DateTime({ dt }: any) {
+interface DateType {
+  dt: number;
+}
+
+export default function DateTime({ dt }: DateType) {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [dayOfWeek, setDayOfWeek] = useState("");

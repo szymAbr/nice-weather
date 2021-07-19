@@ -10,7 +10,7 @@ export default function CitySelector() {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  function handleSubmit(e: any) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     dispatch(fetchWeatherByCity(city));
   }
