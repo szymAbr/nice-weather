@@ -13,6 +13,7 @@ export default function CitySelector() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     dispatch(fetchWeatherByCity(city));
+    console.log(city);
   }
 
   // clears the weather state on route change
