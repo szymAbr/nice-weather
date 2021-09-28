@@ -36,7 +36,7 @@ export default function weatherReducer(
     case FETCH_WEATHER_FAILURE:
       return {
         loading: false,
-        weather: {},
+        weather: null,
         error: action.payload,
       };
     case RESET_WEATHER_STATE:

@@ -12,17 +12,20 @@ export default function WeatherList() {
   const time = useSelector((state: RootState) => state.time.time);
 
   async function getWeatherList(weather: any) {
-    const weatherList = await weather.list.map((item: any) => (
-      <Col key={item.dt} sm={12} md={4}>
-        <WeatherCard
-          description={item.weather[0].description}
-          icon={item.weather[0].icon}
-          temp={item.main.temp}
-          dt={item.dt * 1000}
-        />
-      </Col>
-    ));
-    setWeatherList(weatherList);
+    let weatherList;
+    if (weather) {
+      weatherList = await weather.list.map((item: any) => (
+        <Col key={item.dt} sm={12} md={4}>
+          <WeatherCard
+            description={item.weather[0].description}
+            icon={item.weather[0].icon}
+            temp={item.main.temp}
+            dt={item.dt * 1000}
+          />
+        </Col>
+      ));
+      setWeatherList(weatherList);
+    }
   }
 
   // returns the number of weather cards to be rendered, based on the time period selection
