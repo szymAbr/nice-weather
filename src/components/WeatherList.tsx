@@ -44,10 +44,16 @@ export default function WeatherList() {
 
   useEffect(() => {
     getWeatherList(weather);
+    return () => {
+      setWeatherList([]);
+    };
   }, [weather]);
 
   useEffect(() => {
     setWeatherItems(weatherList.slice(0, checkTimePeriod(time)));
+    return () => {
+      setWeatherItems([]);
+    };
   }, [time]);
 
   return (
