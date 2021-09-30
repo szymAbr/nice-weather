@@ -8,14 +8,15 @@ import WeatherContainer from "./WeatherContainer";
 
 export default function CitySelector() {
   const [city, setCity] = useState("");
+  // const [cityHistory, setCityHistory] = useState<string[]>([]);
   const dispatch = useDispatch();
   const location = useLocation();
   const error = useSelector((state: RootState) => state.weather.error);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    dispatch(resetWeatherState());
     dispatch(fetchWeatherByCity(city));
-    console.log(city);
   }
 
   function handleError() {
