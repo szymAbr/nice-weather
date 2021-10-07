@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { fetchWeatherByCity, resetWeatherState } from "../state";
+import {
+  fetchWeatherByCity,
+  resetWeatherState,
+  setSearchHistory,
+} from "../state";
 import type { RootState } from "../state/store";
 import WeatherContainer from "./WeatherContainer";
 
@@ -55,6 +59,10 @@ export default function CitySelector() {
   useEffect(() => {
     city ? setCity(city[0].toUpperCase() + city.slice(1)) : setCity("");
   }, [city]);
+
+  useEffect(() => {
+    dispatch(setSearchHistory(history));
+  }, [history]);
 
   useEffect(() => {
     handleError();
