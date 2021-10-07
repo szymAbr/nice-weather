@@ -8,15 +8,37 @@ import WeatherContainer from "./WeatherContainer";
 
 export default function CitySelector() {
   const [city, setCity] = useState("");
-  // const [cityHistory, setCityHistory] = useState<string[]>([]);
+  const [history, setHistory] = useState<string[]>([]);
   const dispatch = useDispatch();
   const location = useLocation();
   const error = useSelector((state: RootState) => state.weather.error);
+
+  function recentSearches(item: string) {
+    let currHistory = history;
+    if (!history.includes(item)) {
+      if (history.length <= 10) {
+        currHistory.push(item);
+        setHistory(currHistory);
+      } else {
+        currHistory.shift();
+        currHistory.push(item);
+        setHistory(currHistory);
+      }
+    } else {
+      const itemIndex = currHistory.indexOf(item);
+      currHistory = currHistory
+        .slice(0, itemIndex)
+        .concat(currHistory.slice(itemIndex + 1, currHistory.length + 1));
+      currHistory.push(item);
+      setHistory(currHistory);
+    }
+  }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     dispatch(resetWeatherState());
     dispatch(fetchWeatherByCity(city));
+    recentSearches(city);
   }
 
   function handleError() {
