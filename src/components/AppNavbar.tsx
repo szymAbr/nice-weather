@@ -1,6 +1,7 @@
 import React from "react";
-import { Container, Navbar, Nav } from "react-bootstrap";
+import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import LastSearches from "./LastSearches";
 
 export default function AppNavbar() {
   return (
@@ -18,6 +19,9 @@ export default function AppNavbar() {
             <Nav.Link as={Link} to="/cityselector">
               Search by city
             </Nav.Link>
+            <NavDropdown title="Last Searches" id="last-searches-dropdown">
+              <LastSearches />
+            </NavDropdown>
           </Nav>
         </Navbar.Collapse>
       </Container>
