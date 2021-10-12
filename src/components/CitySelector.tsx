@@ -16,6 +16,10 @@ export default function CitySelector() {
   const dispatch = useDispatch();
   const location = useLocation();
   const error = useSelector((state: RootState) => state.weather.error);
+  const weather = useSelector((state: RootState) => state.weather.weather);
+  const currHistoryState = useSelector(
+    (state: RootState) => state.history.history
+  );
 
   function recentSearches(item: string) {
     let currHistory = history;
@@ -54,6 +58,7 @@ export default function CitySelector() {
   // clears the weather state on route change
   useEffect(() => {
     dispatch(resetWeatherState());
+    setHistory(currHistoryState);
   }, [location]);
 
   useEffect(() => {
@@ -67,6 +72,10 @@ export default function CitySelector() {
   useEffect(() => {
     handleError();
   }, [error]);
+
+  useEffect(() => {
+    setCity("");
+  }, [weather]);
 
   return (
     <Container className="text-center mb-4">
